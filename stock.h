@@ -13,7 +13,6 @@ using namespace std;
 
 #pragma endregion
 
-
 nodo<producto>* leerStock(){
     //Declarando variables
     producto actual;

@@ -211,4 +211,4 @@ void pagarFactura(factura *clienteActual, nodo<producto> **listaProductos,nodo<f
         system("pause");
     } while (pagar);
     
-}
+};

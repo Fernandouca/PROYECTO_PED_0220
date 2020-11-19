@@ -305,4 +305,4 @@ void menuPrincipal()
     } while (continuar);
 
     guardarStock(listaProductos);
-}
+};

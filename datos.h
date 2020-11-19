@@ -175,4 +175,4 @@ void mostrarProducto(nodo<producto> *lista, int opcion)
         }
         break;
     }
-}
+};

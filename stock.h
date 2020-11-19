@@ -66,3 +66,5 @@ void guardarStock(nodo<producto> *lista)
         lista = lista->sig;
     }
 }
+
+

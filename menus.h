@@ -223,7 +223,7 @@ void menuAdmin(nodo<producto> **listaProductos, nodo<factura> **listaFacturas)
     {
         system("cls");
 
-        cout << "\n\tQUE OPERACION DESEA REALIZAR\n";
+       cout << "\n\tQUE OPERACION DESEA REALIZAR\n";
         cout << "\n1.Reembolsar compras de clientes";
         cout << "\n2.Modificar lista de productos";
         cout << "\n3.Ver ganancias totales";

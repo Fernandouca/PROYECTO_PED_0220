@@ -168,6 +168,7 @@ void restarExistencias(int codigoProducto, int cantidadProductos, nodo<producto>
     }
 }
 
+
 float obtenerTotal(nodo<producto> *carrito){
     float total = 0;
     while (carrito){

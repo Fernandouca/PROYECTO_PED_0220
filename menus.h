@@ -146,7 +146,7 @@ void modificarCarrito(factura *clienteActual)
             if (eliminarLista(&clienteActual->carrito))
             {
                 system("cls");
-                cout << "\n\tel carrito de compras esta vacio\n\n";
+                cout << "\n\tel carrito de compras esta vacio.\n\n";
                 system("pause");
             }
             break;
@@ -174,7 +174,7 @@ void menuClientes(nodo<producto> **listaProductos, nodo<factura> **listaFacturas
         cout << "\n\tQUE OPERACION DESEA REALIZAR\n";
         cout << "\n1.Agregar al carrito";
         cout << "\n2.Modificar carrito";
-        cout << "\n3.Finalizar";
+        cout << "\n3.Pagar";
         cout << "\n\tOpcion: ";
         cin >> opcion;
 
@@ -190,7 +190,7 @@ void menuClientes(nodo<producto> **listaProductos, nodo<factura> **listaFacturas
             }
             else
             {
-                cout << "\nSu carrito esta vacio\n";
+                cout << "\nSu carrito esta vacio.\n";
                 system("pause");
             }
             break;
@@ -199,6 +199,8 @@ void menuClientes(nodo<producto> **listaProductos, nodo<factura> **listaFacturas
             {
                 pagarFactura(&clienteActual, listaProductos, listaFacturas);
                 agglista(listaFacturas, clienteActual);
+                continuar = false;
+                break;
             }
             else
             {
@@ -223,7 +225,7 @@ void menuAdmin(nodo<producto> **listaProductos, nodo<factura> **listaFacturas)
     {
         system("cls");
 
-       cout << "\n\tQUE OPERACION DESEA REALIZAR\n";
+        cout << "\n\tQUE OPERACION DESEA REALIZAR\n";
         cout << "\n1.Reembolsar compras de clientes";
         cout << "\n2.Modificar lista de productos";
         cout << "\n3.Ver ganancias totales";

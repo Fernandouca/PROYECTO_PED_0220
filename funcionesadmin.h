@@ -175,4 +175,4 @@ void eliminarDelStock(nodo<producto> **listaProductos){
         cout << "\n\nElproducto a sido eliminado\n\n";
         system("pause");
     }
-}
+};

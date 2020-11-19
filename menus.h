@@ -234,8 +234,17 @@ void menuAdmin(nodo<producto> **listaProductos, nodo<factura> **listaFacturas)
         switch (opcion)
         {
         case 1:
-            menuFacturas(listaProductos, listaFacturas);
-            break;
+            if (listaFacturas == nullptr)
+            {
+                menuFacturas(listaProductos, listaFacturas);
+            }
+            else
+            {
+                cout << "No hay compras que reembolsar." << endl;
+                system("pause");
+                break;
+            }
+
         case 2:
             menuProductos(listaProductos);
             break;
@@ -262,7 +271,7 @@ void menuPrincipal()
     do
     {
         system("cls");
-        cout << "\n\tBIENVENIDO A NTN DIGITAL\n";
+        cout << "\n\tBIENVENIDO A DIGITAL ZONE\n";
         cout << "\nSeleccione una opcion:\n";
         cout << "\n1.Cliente\t\t2.Administrador\t\t3.Salir";
         cout << "\n\nopcion: ";

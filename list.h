@@ -171,4 +171,4 @@ bool eliminarLista(nodo<T> **lista)
     {
         return true;
     }
-}
+};

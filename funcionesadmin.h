@@ -11,7 +11,8 @@ using namespace std;
 
 #pragma endregion
 
-float mostrarGanancias(nodo<factura> *lista){
+float mostrarGanancias(nodo<factura> *lista)
+{
     float ganancia = 0;
     while (lista)
     {
@@ -21,12 +22,14 @@ float mostrarGanancias(nodo<factura> *lista){
     return ganancia;
 }
 
-
 //+++PARA REEMBOLSOS+++//
-void regresarAlStock(nodo<producto> **listaProductos,nodo<producto> *carrito){
+void regresarAlStock(nodo<producto> **listaProductos, nodo<producto> *carrito)
+{
     nodo<producto> *iterador = *listaProductos;
-    while (iterador){
-        if (iterador->dato.codigo == carrito->dato.codigo){
+    while (iterador)
+    {
+        if (iterador->dato.codigo == carrito->dato.codigo)
+        {
             iterador->dato.cantidad += carrito->dato.cantidad;
             return;
         }
@@ -34,7 +37,8 @@ void regresarAlStock(nodo<producto> **listaProductos,nodo<producto> *carrito){
     }
 }
 
-void reembolso(nodo<producto> **listaProductos,nodo<factura> **listaFacrtuas){
+void reembolso(nodo<producto> **listaProductos, nodo<factura> **listaFacrtuas)
+{
     int codigo;
     nodo<producto> *carrito;
     system("cls");
@@ -42,78 +46,82 @@ void reembolso(nodo<producto> **listaProductos,nodo<factura> **listaFacrtuas){
     cout << "\ncodigo: ";
     cin >> codigo;
 
-    carrito = buscarint(*listaFacrtuas,codigo)->dato.carrito;
+    carrito = buscarint(*listaFacrtuas, codigo)->dato.carrito;
 
-    while(carrito){
-        regresarAlStock(listaProductos,carrito);
+    while (carrito)
+    {
+        regresarAlStock(listaProductos, carrito);
         carrito = carrito->sig;
     }
-    
-    eliminarNodo(listaFacrtuas,codigo);
 
+    eliminarNodo(listaFacrtuas, codigo);
 }
 
 //++PARA AGREGAR AL STOCK+++//
-int obtenerCodigo(nodo<producto> *lista, int min, int max){
-    nodo<producto> *actual = buscarint(lista,min);
+int obtenerCodigo(nodo<producto> *lista, int min, int max)
+{
+    nodo<producto> *actual = buscarint(lista, min);
 
-    while((actual) && (actual->dato.codigo < max)){
+    while ((actual) && (actual->dato.codigo < max))
+    {
         actual = actual->sig;
     }
     return ++actual->dato.codigo;
 }
 
-producto skereee(nodo<producto> *listaProductos){
+producto skereee(nodo<producto> *listaProductos)
+{
     producto agregar;
     unsigned short opcion;
-    int min,max;
+    int min, max;
     system("cls");
     cout << "\n\tDe que categoria es el producto?\n";
     cout << "\n1.Monitores\t2.Tarjetas Graficas\t3.Procesadores";
     cout << "\n4.Cases\t\t5.Placas Base \t\t6.Fuentes de poder";
     cin >> opcion;
 
-    switch(opcion){
-        case 1:
-            min = 1001;
-            max = 1999;
-            agregar.codigo = obtenerCodigo(listaProductos,min,max);
-            break;
-        case 2:
-            min = 2001;
-            max = 2999;
-            agregar.codigo = obtenerCodigo(listaProductos,min,max);
-            break;
-        case 3:
-            min = 3001;
-            max = 3999;
-            agregar.codigo = obtenerCodigo(listaProductos,min,max);
-            break;
-        case 4:
-            min = 4001;
-            max = 4999;
-            agregar.codigo = obtenerCodigo(listaProductos,min,max);
-            break;
-        case 5:
-            min = 5001;
-            max = 5999;
-            agregar.codigo = obtenerCodigo(listaProductos,min,max);
-            break;
-        case 6:
-            min = 6001;
-            max = 6999;
-            agregar.codigo = obtenerCodigo(listaProductos,min,max);
-            break;
-        default:
-            cout << "\nError\n";
-            system("pause");
-            break; 
+    switch (opcion)
+    {
+    case 1:
+        min = 1001;
+        max = 1999;
+        agregar.codigo = obtenerCodigo(listaProductos, min, max);
+        break;
+    case 2:
+        min = 2001;
+        max = 2999;
+        agregar.codigo = obtenerCodigo(listaProductos, min, max);
+        break;
+    case 3:
+        min = 3001;
+        max = 3999;
+        agregar.codigo = obtenerCodigo(listaProductos, min, max);
+        break;
+    case 4:
+        min = 4001;
+        max = 4999;
+        agregar.codigo = obtenerCodigo(listaProductos, min, max);
+        break;
+    case 5:
+        min = 5001;
+        max = 5999;
+        agregar.codigo = obtenerCodigo(listaProductos, min, max);
+        break;
+    case 6:
+        min = 6001;
+        max = 6999;
+        agregar.codigo = obtenerCodigo(listaProductos, min, max);
+        break;
+    default:
+        cout << "\nError\n";
+        system("pause");
+        break;
     }
     fflush(stdin);
     cout << "\nnombre del producto: ";
-    getline(cin,agregar.nombre);
+    getline(cin, agregar.nombre);
     cout << "\nmodelo del prducto: ";
-    getline(cin,agregar.modelo);
+    getline(cin, agregar.modelo);
     cout << "\nprecio del producto: ";
     cin >> agregar.precio;
     cout << "\ncantidad a ingresar: ";
@@ -122,8 +130,9 @@ producto skereee(nodo<producto> *listaProductos){
     return agregar;
 }
 
-void agregarInventario(nodo<producto> **listaProductos){
-    int codigo,cantidad;
+void agregarInventario(nodo<producto> **listaProductos)
+{
+    int codigo, cantidad;
     nodo<producto> *modificador = *listaProductos;
     system("cls");
     cout << "\n\tintroduce el codigo de producto\n";
@@ -141,7 +150,8 @@ void agregarInventario(nodo<producto> **listaProductos){
     modificador->dato.cantidad += cantidad;
 }
 
-void agregarAlStock(nodo<producto> **listaProductos){
+void agregarAlStock(nodo<producto> **listaProductos)
+{
     producto agregar;
     unsigned short opcion;
 
@@ -152,26 +162,29 @@ void agregarAlStock(nodo<producto> **listaProductos){
     cout << "\nopcion: ";
     cin >> opcion;
 
-    switch(opcion){
-        case 1:
-            agregar = skereee(*listaProductos);
-            agglista(listaProductos,agregar);
-            break;
-        case 2:
-            agregarInventario(listaProductos);
-            break;
+    switch (opcion)
+    {
+    case 1:
+        agregar = skereee(*listaProductos);
+        agglista(listaProductos, agregar);
+        break;
+    case 2:
+        agregarInventario(listaProductos);
+        break;
     }
 }
 
 //+++PARA ELIMINAR DEL STOCK+++//
-void eliminarDelStock(nodo<producto> **listaProductos){
+void eliminarDelStock(nodo<producto> **listaProductos)
+{
     int codigo;
 
     cout << "\n\tIngrese el codigo del producto a eliminar\n";
     cout << "\ncodigo: ";
     cin >> codigo;
 
-    if(eliminarNodo(listaProductos,codigo)){
+    if (eliminarNodo(listaProductos, codigo))
+    {
         cout << "\n\nElproducto a sido eliminado\n\n";
         system("pause");
     }

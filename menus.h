@@ -47,7 +47,7 @@ void menuFacturas(nodo<producto> **listaProductos, nodo<factura> **listaFacturas
             system("pause");
             break;
         }
-    } while (continuar);
+    } while (continuar && *listaFacturas);
 }
 
 void menuProductos(nodo<producto> **listaProductos)
@@ -236,7 +236,7 @@ void menuAdmin(nodo<producto> **listaProductos, nodo<factura> **listaFacturas)
         switch (opcion)
         {
         case 1:
-            if (listaFacturas == nullptr)
+            if (*listaFacturas)
             {
                 menuFacturas(listaProductos, listaFacturas);
             }
@@ -244,8 +244,8 @@ void menuAdmin(nodo<producto> **listaProductos, nodo<factura> **listaFacturas)
             {
                 cout << "No hay compras que reembolsar." << endl;
                 system("pause");
-                break;
             }
+            break;
 
         case 2:
             menuProductos(listaProductos);

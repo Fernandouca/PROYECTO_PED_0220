@@ -26,7 +26,7 @@ void datosClientes(factura &cliente1)
 bool datosAdmin()
 { //agarra los datos que se ingresen y los compara
     string user1 = "admin", user2;
-    string pass1 = "password", pass2;
+    string pass1 = "admin", pass2;
 
     system("cls");
     fflush(stdin);

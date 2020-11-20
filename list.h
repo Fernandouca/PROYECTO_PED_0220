@@ -124,31 +124,30 @@ nodo<T> *buscarint(nodo<T> *lista, int buscador)
 template <typename T>
 bool eliminarNodo(nodo<T> **lista, int buscador)
 {
-    if (*lista)
+    if (lista)
     {
-        nodo<T> *iterador = *lista;
+        nodo<T> *aux1 = *lista;
+        nodo<T> *aux2 = nullptr;
 
-        if (iterador->dato.codigo == buscador)
+        while ((aux1) && (aux1->dato.codigo != buscador))
         {
-            *lista = iterador->sig;
-            delete iterador;
+            aux2 = aux1;
+            aux1 = aux1->sig;
+        }
+        if (!aux1)
+        {
+            return false;
+        }
+        else if (!aux2)
+        {
+            *lista = aux1->sig;
+            delete aux1;
             return true;
         }
-        while (iterador->sig)
+        else
         {
-            if (iterador->sig->dato.codigo == buscador)
-            {
-                nodo<T> *nodoABorrar = iterador->sig;
-                iterador->sig = iterador->sig->sig;
-                delete nodoABorrar;
-                return true;
-            }
-        }
-        if (iterador->dato.codigo == buscador)
-        {
-            nodo<T> *nodoABorrar = iterador;
-            iterador = nullptr;
-            delete nodoABorrar;
+            aux2->sig = aux1->sig;
+            delete aux1;
             return true;
         }
     }
@@ -172,4 +171,3 @@ bool eliminarLista(nodo<T> **lista)
         return true;
     }
 }
-

@@ -61,23 +61,28 @@ void reembolso(nodo<producto> **listaProductos, nodo<factura> **listaFacrtuas)
 int obtenerCodigo(nodo<producto> *lista, int min, int max)
 {
     nodo<producto> *actual = buscarint(lista, min);
+    int codigo;
 
-    while ((actual) && (actual->dato.codigo < max))
+    while ((actual) && (actual->sig->dato.codigo < max))
     {
         actual = actual->sig;
     }
-    return ++actual->dato.codigo;
+    codigo = (actual->dato.codigo);
+
+    return codigo;
 }
 
 producto skereee(nodo<producto> *listaProductos)
 {
     producto agregar;
     unsigned short opcion;
-    int min, max;
+    int min, max, codigo;
     system("cls");
     cout << "\n\tDe que categoria es el producto?\n";
     cout << "\n1.Monitores\t2.Tarjetas Graficas\t3.Procesadores";
-    cout << "\n4.Cases\t\t5.Placas Base \t\t6.Fuentes de poder";
+    cout << "\n4.Cases\t\t5.Placas Base \t\t6.Fuentes de poder\n"
+         << endl;
+    cout << "Opcion: ";
     cin >> opcion;
 
     switch (opcion)
@@ -85,38 +90,41 @@ producto skereee(nodo<producto> *listaProductos)
     case 1:
         min = 1001;
         max = 1999;
-        agregar.codigo = obtenerCodigo(listaProductos, min, max);
+        codigo = obtenerCodigo(listaProductos, min, max);
         break;
     case 2:
         min = 2001;
         max = 2999;
-        agregar.codigo = obtenerCodigo(listaProductos, min, max);
+        codigo = obtenerCodigo(listaProductos, min, max);
         break;
     case 3:
         min = 3001;
         max = 3999;
-        agregar.codigo = obtenerCodigo(listaProductos, min, max);
+        codigo = obtenerCodigo(listaProductos, min, max);
         break;
     case 4:
         min = 4001;
         max = 4999;
-        agregar.codigo = obtenerCodigo(listaProductos, min, max);
+        codigo = obtenerCodigo(listaProductos, min, max);
         break;
     case 5:
         min = 5001;
         max = 5999;
-        agregar.codigo = obtenerCodigo(listaProductos, min, max);
+        codigo = obtenerCodigo(listaProductos, min, max);
         break;
     case 6:
         min = 6001;
         max = 6999;
-        agregar.codigo = obtenerCodigo(listaProductos, min, max);
+        codigo = obtenerCodigo(listaProductos, min, max);
         break;
     default:
         cout << "\nError\n";
         system("pause");
         break;
     }
+
+    codigo = ++codigo;
+    agregar.codigo = codigo;
     fflush(stdin);
     cout << "\nnombre del producto: ";
     getline(cin, agregar.nombre);

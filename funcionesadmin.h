@@ -193,7 +193,7 @@ void eliminarDelStock(nodo<producto> **listaProductos)
 
     if (eliminarNodo(listaProductos, codigo))
     {
-        cout << "\n\nElproducto a sido eliminado\n\n";
+        cout << "\n\nEl producto a sido eliminado\n\n";
         system("pause");
     }
 }

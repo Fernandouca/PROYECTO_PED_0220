@@ -140,7 +140,15 @@ void modificarCarrito(factura *clienteActual)
         switch (opcion)
         {
         case 1:
-            eliminarItems(clienteActual);
+            if (clienteActual->carrito)
+            {
+                eliminarItems(clienteActual);
+            }
+            else
+            {
+                cout << "El carrito esta vacio" << endl;
+                system("pause");
+            }
             break;
         case 2:
             if (eliminarLista(&clienteActual->carrito))

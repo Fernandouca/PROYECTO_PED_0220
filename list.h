@@ -160,13 +160,13 @@ bool eliminarNodo(nodo<T> **lista, int buscador)
 template <typename T>
 bool eliminarLista(nodo<T> **lista)
 {
-    while (lista)
+    while (*lista)
     {
         nodo<T> *aux = *lista;
         *lista = aux->sig;
         delete aux;
     }
-    if (!lista)
+    if (!(*lista))
     {
         return true;
     }

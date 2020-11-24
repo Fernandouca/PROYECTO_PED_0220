@@ -12,7 +12,7 @@ using namespace std;
 #pragma endregion
 
 void datosClientes(factura &cliente1)
-{ //solorecolecta los datos de los clientes
+{ 
     system("cls");
     fflush(stdin);
 
@@ -24,7 +24,7 @@ void datosClientes(factura &cliente1)
 }
 
 bool datosAdmin()
-{ //agarra los datos que se ingresen y los compara
+{
     string user1 = "admin", user2;
     string pass1 = "admin", pass2;
 
@@ -35,15 +35,15 @@ bool datosAdmin()
     getline(cin, user2);
     cout << "\nPASSWORD: ";
     getline(cin, pass2);
-    //como es una funcion bool retorna un valor booleano {true or false}
-    return ((user1 == user2) && (pass1 == pass2)) ? true : false; //esto simplifica una condicional para retornar un valor bool
+    
+    return ((user1 == user2) && (pass1 == pass2)) ? true : false; 
 }
 
 void mostrarProducto(nodo<producto> *lista, int opcion)
 {
     int cont = 1;
-    nodo<producto> *actual = new nodo<producto>(); //un nuevo nodo donde especifico que la template T es un producto
-    actual = lista;                                //pongo el nodo al principio de la lista
+    nodo<producto> *actual = new nodo<producto>(); 
+    actual = lista;                                
 
     system("cls");
 
@@ -51,8 +51,8 @@ void mostrarProducto(nodo<producto> *lista, int opcion)
     {
     case 1:
         while ((actual != NULL) && (actual->dato.codigo >= 1001) && (actual->dato.codigo <= 1999))
-        {                                  //verifica que no este fuera de la categoria ni al final de lista
-            cout << "\n\tOpcion " << cont; //es solo para saber que producto es sin mostrar el codigo de producto
+        {                                  
+            cout << "\n\tOpcion " << cont; 
             cout << "\n\tNombre: " << actual->dato.nombre;
             cout << "\n\tModelo: " << actual->dato.modelo;
             cout << "\n\tPrecio: $" << actual->dato.precio;
@@ -65,12 +65,12 @@ void mostrarProducto(nodo<producto> *lista, int opcion)
                 cout << "\n\tEn stock: " << actual->dato.cantidad;
             }
             cout << "\n\n";
-            cont++;               //el seleccionador por asi decirlo avanza
-            actual = actual->sig; //me muevo al siguiente nodo{osea producto}
+            cont++;               
+            actual = actual->sig; 
         }
         break;
     case 2:
-        actual = buscarint(lista, 2001); //aqui uso la funcion buscar que me retorna un nodo especifico de la lista para que actual este en ese nodo
+        actual = buscarint(lista, 2001);
         while ((actual != NULL) && (actual->dato.codigo >= 2001) && (actual->dato.codigo <= 2999))
         {
             cout << "\n\tOpcion " << cont;
